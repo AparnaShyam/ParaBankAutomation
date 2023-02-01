@@ -5,6 +5,8 @@ import static org.testng.Assert.assertEquals;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 public class LoginTest extends BaseTest{
 	
 	WebDriver driver;
@@ -18,6 +20,7 @@ public class LoginTest extends BaseTest{
 	String actualRegistrationTitle=cmnDriver.getTitle();
 	assertEquals(actualRegistrationTitle, expectedRegistrationTitle);
 	loginpage.registerAccount("a","b", "address", "city", "state", "zip", 0123, "ssn", "abc", "abc");
+	test.log(LogStatus.PASS, "Registration Completed");
 	
 	}
 
