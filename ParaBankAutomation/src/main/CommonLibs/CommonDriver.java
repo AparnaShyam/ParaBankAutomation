@@ -106,8 +106,9 @@ public class CommonDriver {
 	}
 	
 	public void navigateToNextTab() {
-	      ArrayList<String> wid = new ArrayList<String>(driver.getWindowHandles());
-	      driver.switchTo().window(wid.get(1));
+	     
+		ArrayList<String> wid = new ArrayList<String>(driver.getWindowHandles());  
+		driver.switchTo().window(wid.get(1));
 		
 	}
 

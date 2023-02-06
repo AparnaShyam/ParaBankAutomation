@@ -1,5 +1,7 @@
 package ParabankTests;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -10,17 +12,16 @@ import com.relevantcodes.extentreports.LogStatus;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 import CommonLibs.CommonDriver;
+import Pages.BasePage;
 import Pages.LoginPage;
 
 
-public class BaseTest {
+public class BaseTest{
 	
 public CommonDriver cmnDriver;
 
-
-	
-	String url = "https://parabank.parasoft.com/parabank/index.htm";
-	
+String URL;
+	public BasePage basepage;
 	WebDriver driver;
 	LoginPage loginpage;
 
@@ -29,6 +30,11 @@ public CommonDriver cmnDriver;
     ExtentReports extent;
     //helps to generate the logs in the test report.
     ExtentTest test;
+	//String URL = "https://parabank.parasoft.com/parabank/index.htm";
+
+  
+	
+	
 	
 	@BeforeClass
 	public void invokeBrowser() throws Exception{
@@ -39,8 +45,9 @@ public CommonDriver cmnDriver;
 		
 		cmnDriver.setPageloadTimeout(60);
 		cmnDriver.setElementDetectionTimeout(10);
-		
-		cmnDriver.navigateToFirstUrl(url);
+		basepage=new BasePage();
+		URL=basepage.getUrlp();
+		cmnDriver.navigateToFirstUrl(URL);
 		
 		driver= cmnDriver.getDriver();
 		loginpage=new LoginPage(driver);
